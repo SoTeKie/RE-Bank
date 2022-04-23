@@ -51,7 +51,7 @@ class UserProfile(BaseModel):
     shipping_address = models.OneToOneField(ShippingAddress, on_delete=models.CASCADE)
     billing_address = models.OneToOneField(BillingAddress, on_delete=models.CASCADE)
     children = models.ManyToManyField(
-        "self", related_name="parents", through=ChildParent
+        "self", related_name="parents", through=ChildParent, symmetrical=False
     )
 
 
