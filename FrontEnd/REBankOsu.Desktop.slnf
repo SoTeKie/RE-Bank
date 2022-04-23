@@ -1,0 +1,11 @@
+﻿{
+  "solution": {
+    "path": "REBankOsu.sln",
+    "projects": [
+      "REBankOsu.Desktop\\REBankOsu.Desktop.csproj",
+      "REBankOsu.Game\\REBankOsu.Game.csproj",
+      "REBankOsu.Game.Tests\\REBankOsu.Game.Tests.csproj",
+      "REBankOsu.Resources\\REBankOsu.Resources.csproj"
+    ]
+  }
+}

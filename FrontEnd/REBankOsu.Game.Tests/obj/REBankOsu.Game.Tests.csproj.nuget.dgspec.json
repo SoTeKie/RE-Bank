@@ -1,0 +1,192 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game.Tests/REBankOsu.Game.Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game.Tests/REBankOsu.Game.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game.Tests/REBankOsu.Game.Tests.csproj",
+        "projectName": "REBankOsu.Game.Tests",
+        "projectPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game.Tests/REBankOsu.Game.Tests.csproj",
+        "packagesPath": "/Users/kuroihikari/.nuget/packages/",
+        "outputPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/kuroihikari/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game/REBankOsu.Game.csproj": {
+                "projectPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game/REBankOsu.Game.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.0.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game/REBankOsu.Game.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game/REBankOsu.Game.csproj",
+        "projectName": "REBankOsu.Game",
+        "projectPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game/REBankOsu.Game.csproj",
+        "packagesPath": "/Users/kuroihikari/.nuget/packages/",
+        "outputPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Game/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/kuroihikari/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/REBankOsu.Resources.csproj": {
+                "projectPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/REBankOsu.Resources.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.8, )"
+            },
+            "ppy.osu.Framework": {
+              "target": "Package",
+              "version": "[2021.1029.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/REBankOsu.Resources.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/REBankOsu.Resources.csproj",
+        "projectName": "REBankOsu.Resources",
+        "projectPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/REBankOsu.Resources.csproj",
+        "packagesPath": "/Users/kuroihikari/.nuget/packages/",
+        "outputPath": "/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/kuroihikari/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
