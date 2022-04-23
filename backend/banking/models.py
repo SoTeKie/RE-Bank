@@ -49,10 +49,6 @@ class UserProfile(BaseModel):
     )
 
 
-class Transaction(BaseModel):
-    pass
-
-
 class BankAccount(BaseModel):
     user = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
     balance = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
@@ -61,3 +57,20 @@ class BankAccount(BaseModel):
 
 class Card(BaseModel):
     bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT)
+
+
+class Transaction(BaseModel):
+    bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT, null=True)
+    card = models.ForeignKey(Card, on_delete=models.PROTECT, null=True)
+    amount = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
+    # Only one of the parties is guaranteed to be on our site.
+    # As a workaround we simply store data about the other party in an indexed JSON field.
+    other_party = models.JSONField()
+
+    @property
+    def is_sender(self):
+        return self.amount.amount < 0
+
+    @property
+    def is_receiver(self):
+        return self.amount.amount > 0
