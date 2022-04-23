@@ -19,23 +19,37 @@ class BaseModel(models.Model):
 class Address(BaseModel):
     country = CountryField()
     state = models.CharField(max_length=40, blank=True)
+    city = models.CharField(max_length=85)
     street = models.CharField(max_length=500)
-    additional_info = models.JSONField()
+    additional_info = models.JSONField(null=True, blank=True)
 
     class Meta:
         abstract = True
 
 
 class BillingAddress(Address):
-    pass
+    user = models.OneToOneField(
+        "UserProfile",
+        on_delete=models.CASCADE,
+        related_name="billing_address",
+    )
 
 
 class ShippingAddress(Address):
-    pass
+    user = models.OneToOneField(
+        "UserProfile",
+        on_delete=models.CASCADE,
+        related_name="shipping_address",
+    )
 
 
 class ChildParent(BaseModel):
-    pass
+    child = models.ForeignKey(
+        "UserProfile", on_delete=models.PROTECT, related_name="parent_child"
+    )
+    parent = models.ForeignKey(
+        "UserProfile", on_delete=models.PROTECT, related_name="child_parent"
+    )
 
 
 class UserProfile(BaseModel):
@@ -51,14 +65,9 @@ class UserProfile(BaseModel):
     role = models.CharField(max_length=10, choices=Role.choices, default=Role.CLIENT)
     phone_number = models.CharField(max_length=15)
     is_verified = models.BooleanField(default=False)
-    shipping_address = models.OneToOneField(
-        ShippingAddress, on_delete=models.CASCADE, null=True, blank=True
-    )
-    billing_address = models.OneToOneField(
-        BillingAddress, on_delete=models.CASCADE, null=True, blank=True
-    )
+
     children = models.ManyToManyField(
-        "self", related_name="parents", through=ChildParent, symmetrical=False
+        "self", through=ChildParent, symmetrical=False, related_name="parents"
     )
 
     @property
@@ -74,6 +83,7 @@ class UserProfile(BaseModel):
     @property
     def base_profile(self):
         return {
+            "id": self.id,
             "email": self.user.email,
             "title": self.title,
             "first_name": self.user.first_name,
@@ -93,14 +103,14 @@ class UserProfile(BaseModel):
     def __full_parent_profile(self):
         return {
             **self.base_profile,
-            "children": [child.full_profile for child in self.children.all()],
+            "children": [child.base_profile for child in self.children.all()],
         }
 
     @property
     def __full_child_profile(self):
         return {
             **self.base_profile,
-            "children": [parent.full_profile for parent in self.parents.all()],
+            "children": [parent.base_profile for parent in self.parents.all()],
         }
 
     @property
