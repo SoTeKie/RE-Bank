@@ -1,5 +1,6 @@
 import uuid
 
+from djmoney.models.fields import MoneyField
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,14 +13,6 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
-
-
-class Card(BaseModel):
-    pass
-
-
-class BankAccount(BaseModel):
-    pass
 
 
 class Address(BaseModel):
@@ -54,3 +47,17 @@ class UserProfile(BaseModel):
     children = models.ManyToManyField(
         "self", related_name="parents", through=ChildParent
     )
+
+
+class Transaction(BaseModel):
+    pass
+
+
+class BankAccount(BaseModel):
+    user = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
+    balance = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
+    iban = models.CharField(max_length=34)
+
+
+class Card(BaseModel):
+    bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT)
