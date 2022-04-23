@@ -10,7 +10,7 @@ class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -45,14 +45,44 @@ class UserProfile(BaseModel):
         RESTRICTED_CLIENT = "r_client"
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    middle_name = models.CharField(max_length=50, blank=True)
+    title = models.CharField(max_length=10, blank=True)
     role = models.CharField(max_length=10, choices=Roles.choices, default=Roles.CLIENT)
     phone_number = models.CharField(max_length=15)
     is_verified = models.BooleanField(default=False)
-    shipping_address = models.OneToOneField(ShippingAddress, on_delete=models.CASCADE)
-    billing_address = models.OneToOneField(BillingAddress, on_delete=models.CASCADE)
+    shipping_address = models.OneToOneField(
+        ShippingAddress, on_delete=models.CASCADE, null=True, blank=True
+    )
+    billing_address = models.OneToOneField(
+        BillingAddress, on_delete=models.CASCADE, null=True, blank=True
+    )
     children = models.ManyToManyField(
         "self", related_name="parents", through=ChildParent, symmetrical=False
     )
+
+    @property
+    def full_name(self):
+        middle_name = f" {self.middle_name}" if self.middle_name != "" else ""
+        return f"{self.user.first_name}{middle_name} {self.user.last_name}"
+
+    @property
+    def formatted_name(self):
+        middle_name = f" {self.middle_name[0]}." if self.middle_name != "" else ""
+        return f"{self.title} {self.user.first_name}{middle_name} {self.user.last_name}"
+
+    @property
+    def full_profile(self):
+        return {
+            "email": self.user.email,
+            "title": self.title,
+            "first_name": self.user.first_name,
+            "middle_name": self.middle_name,
+            "last_name": self.user.last_name,
+            "full_name": self.full_name,
+            "formatted_name": self.formatted_name,
+            "phone": self.phone_number,
+            "role": self.role,
+        }
 
 
 class BankAccount(BaseModel):
