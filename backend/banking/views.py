@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
+from django.core.validators import validate_email
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -27,6 +29,10 @@ def register(request):
         first_name: str
         middle_name: str
         last_name: str
+
+        def __post_init__(self):
+            validate_email(self.email)
+            validate_password(self.password)
 
     if not request.user.is_anonymous:
         return Response(status=403)

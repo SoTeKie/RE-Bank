@@ -1,9 +1,33 @@
 from rest_framework import serializers
 
-from .models import UserProfile
+from .models import BankAccount, Card, Transaction, BillingAddress, ShippingAddress
 
 
-class UserSerializer(serializers.ModelSerializer):
+class BankAccountSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserProfile
-        fields = ["id", "role", "phone_number", "is_verified"]
+        model = BankAccount
+        fields = "__all__"
+
+
+class CardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Card
+        fields = "__all__"
+
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = "__all__"
+
+
+class BillingAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BillingAddress
+        fields = "__all__"
+
+
+class ShippingAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShippingAddress
+        fields = "__all__"

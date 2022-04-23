@@ -39,15 +39,16 @@ class ChildParent(BaseModel):
 
 
 class UserProfile(BaseModel):
-    class Roles(models.TextChoices):
+    class Role(models.TextChoices):
         ADMIN = "admin"
         CLIENT = "client"
         RESTRICTED_CLIENT = "r_client"
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     middle_name = models.CharField(max_length=50, blank=True)
+    date_of_birth = models.DateField()
     title = models.CharField(max_length=10, blank=True)
-    role = models.CharField(max_length=10, choices=Roles.choices, default=Roles.CLIENT)
+    role = models.CharField(max_length=10, choices=Role.choices, default=Role.CLIENT)
     phone_number = models.CharField(max_length=15)
     is_verified = models.BooleanField(default=False)
     shipping_address = models.OneToOneField(
@@ -71,7 +72,7 @@ class UserProfile(BaseModel):
         return f"{self.title} {self.user.first_name}{middle_name} {self.user.last_name}"
 
     @property
-    def full_profile(self):
+    def base_profile(self):
         return {
             "email": self.user.email,
             "title": self.title,
@@ -83,6 +84,26 @@ class UserProfile(BaseModel):
             "phone": self.phone_number,
             "role": self.role,
         }
+
+    @property
+    def is_child(self):
+        return self.role == self.Role.RESTRICTED_CLIENT
+
+    @property
+    def __full_parent_profile(self):
+        return {**self.base_profile, "children": [
+            child.full_profile for child in self.children.all()
+        ]}
+
+    @property
+    def __full_child_profile(self):
+        return {**self.base_profile, "children": [
+            parent.full_profile for parent in self.parents.all()
+        ]}
+
+    @property
+    def full_profile(self):
+        return self.__full_child_profile if self.is_child else self.__full_parent_profile
 
 
 class BankAccount(BaseModel):
