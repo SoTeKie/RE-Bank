@@ -1,5 +1,6 @@
 import uuid
 
+from django_countries.fields import CountryField
 from djmoney.models.fields import MoneyField
 from django.db import models
 from django.contrib.auth.models import User
@@ -16,6 +17,11 @@ class BaseModel(models.Model):
 
 
 class Address(BaseModel):
+    country = CountryField()
+    state = models.CharField(max_length=40, blank=True)
+    street = models.CharField(max_length=500)
+    additional_info = models.JSONField()
+
     class Meta:
         abstract = True
 
