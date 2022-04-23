@@ -3,11 +3,26 @@ from dataclasses import dataclass
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.validators import validate_email
+from rest_framework import viewsets
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import UserProfile
+from .models import (
+    UserProfile,
+    Card,
+    BankAccount,
+    Transaction,
+    BillingAddress,
+    ShippingAddress,
+)
+from .serializers import (
+    CardSerializer,
+    BankAccountSerializer,
+    TransactionSerializer,
+    BillingAddressSerializer,
+    ShippingAddressSerializer,
+)
 
 
 @api_view(["GET"])
@@ -53,3 +68,45 @@ def register(request):
     )
     profile.save()
     return Response(profile.full_profile)
+
+
+class CardView(viewsets.ModelViewSet):
+    serializer_class = CardSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return Card.objects.filter(bank_account__user=self.request.user.userprofile)
+
+
+class BankAccountView(viewsets.ModelViewSet):
+    serializer_class = BankAccountSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return BankAccount.objects.filter(user=self.request.user.userprofile)
+
+
+class TransactionView(viewsets.ModelViewSet):
+    serializer_class = TransactionSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return Transaction.objects.filter(
+            bank_account__user=self.request.user.userprofile
+        )
+
+
+class BillingAddressView(viewsets.ModelViewSet):
+    serializer_class = BillingAddressSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return BillingAddress.objects.filter(user=self.request.user.userprofile)
+
+
+class ShippingAddressView(viewsets.ModelViewSet):
+    serializer_class = ShippingAddressSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return ShippingAddress.objects.filter(user=self.request.user.userprofile)

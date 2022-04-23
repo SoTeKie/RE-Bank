@@ -91,19 +91,23 @@ class UserProfile(BaseModel):
 
     @property
     def __full_parent_profile(self):
-        return {**self.base_profile, "children": [
-            child.full_profile for child in self.children.all()
-        ]}
+        return {
+            **self.base_profile,
+            "children": [child.full_profile for child in self.children.all()],
+        }
 
     @property
     def __full_child_profile(self):
-        return {**self.base_profile, "children": [
-            parent.full_profile for parent in self.parents.all()
-        ]}
+        return {
+            **self.base_profile,
+            "children": [parent.full_profile for parent in self.parents.all()],
+        }
 
     @property
     def full_profile(self):
-        return self.__full_child_profile if self.is_child else self.__full_parent_profile
+        return (
+            self.__full_child_profile if self.is_child else self.__full_parent_profile
+        )
 
 
 class BankAccount(BaseModel):
@@ -115,6 +119,7 @@ class BankAccount(BaseModel):
     balance = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
     iban = models.CharField(max_length=34)
     type = models.CharField(max_length=10, choices=Type.choices)
+    is_active = models.BooleanField(default=False)
 
 
 class Card(BaseModel):
@@ -131,12 +136,13 @@ class Card(BaseModel):
     cardholder_name = models.CharField(max_length=100)
     expiration_date = models.CharField(max_length=5)
     brand = models.CharField(max_length=10, choices=Brand.choices)
+    is_active = models.BooleanField(default=False)
 
 
 class Transaction(BaseModel):
     """This class describes all payments either recieved or sent from an account on our platform"""
 
-    bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT, null=True)
+    bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT)
     card = models.ForeignKey(Card, on_delete=models.PROTECT, null=True)
     amount = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
     # Only one of the parties is guaranteed to be on our site.
