@@ -56,16 +56,35 @@ class UserProfile(BaseModel):
 
 
 class BankAccount(BaseModel):
+    class Type(models.TextChoices):
+        DEFAULT = "default"
+        SAVINGS = "savings"
+
     user = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
     balance = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
     iban = models.CharField(max_length=34)
+    type = models.CharField(max_length=10, choices=Type.choices)
 
 
 class Card(BaseModel):
+    class Brand(models.TextChoices):
+        VISA = "visa"
+        MASTERCARD = "mastercard"
+        AMEX = "amex"
+        OTHER = "other"
+
     bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT)
+    pan_last_4 = models.PositiveSmallIntegerField()
+    # This field technically doesn't have to match the users name for formatting reasons
+    # ex.: O'Reilly
+    cardholder_name = models.CharField(max_length=100)
+    expiration_date = models.CharField(max_length=5)
+    brand = models.CharField(max_length=10, choices=Brand.choices)
 
 
 class Transaction(BaseModel):
+    """This class describes all payments either recieved or sent from an account on our platform"""
+
     bank_account = models.ForeignKey(BankAccount, on_delete=models.PROTECT, null=True)
     card = models.ForeignKey(Card, on_delete=models.PROTECT, null=True)
     amount = MoneyField(max_digits=14, decimal_places=2, default_currency="EUR")
