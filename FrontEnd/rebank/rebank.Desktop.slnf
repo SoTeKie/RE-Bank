@@ -1,0 +1,11 @@
+﻿{
+  "solution": {
+    "path": "rebank.sln",
+    "projects": [
+      "rebank.Desktop\\rebank.Desktop.csproj",
+      "rebank.Game\\rebank.Game.csproj",
+      "rebank.Game.Tests\\rebank.Game.Tests.csproj",
+      "rebank.Resources\\rebank.Resources.csproj"
+    ]
+  }
+}

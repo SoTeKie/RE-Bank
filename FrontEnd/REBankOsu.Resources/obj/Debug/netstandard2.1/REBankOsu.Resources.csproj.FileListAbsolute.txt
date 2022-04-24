@@ -1,9 +1,0 @@
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/bin/Debug/netstandard2.1/REBankOsu.Resources.deps.json
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/bin/Debug/netstandard2.1/REBankOsu.Resources.dll
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/bin/Debug/netstandard2.1/REBankOsu.Resources.pdb
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/Debug/netstandard2.1/REBankOsu.Resources.GeneratedMSBuildEditorConfig.editorconfig
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/Debug/netstandard2.1/REBankOsu.Resources.AssemblyInfoInputs.cache
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/Debug/netstandard2.1/REBankOsu.Resources.AssemblyInfo.cs
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/Debug/netstandard2.1/REBankOsu.Resources.csproj.CoreCompileInputs.cache
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/Debug/netstandard2.1/REBankOsu.Resources.dll
-/Users/kuroihikari/Projects/REBankOsu/REBankOsu.Resources/obj/Debug/netstandard2.1/REBankOsu.Resources.pdb

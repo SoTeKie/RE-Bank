@@ -1,0 +1,13 @@
+C:\hackthon\rebank\rebank.Game\bin\Debug\netstandard2.1\rebank.Game.deps.json
+C:\hackthon\rebank\rebank.Game\bin\Debug\netstandard2.1\rebank.Game.dll
+C:\hackthon\rebank\rebank.Game\bin\Debug\netstandard2.1\rebank.Game.pdb
+C:\hackthon\rebank\rebank.Game\bin\Debug\netstandard2.1\rebank.Resources.dll
+C:\hackthon\rebank\rebank.Game\bin\Debug\netstandard2.1\rebank.Resources.pdb
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.csproj.AssemblyReference.cache
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.AssemblyInfoInputs.cache
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.AssemblyInfo.cs
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.csproj.CoreCompileInputs.cache
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.csproj.CopyComplete
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.dll
+C:\hackthon\rebank\rebank.Game\obj\Debug\netstandard2.1\rebank.Game.pdb

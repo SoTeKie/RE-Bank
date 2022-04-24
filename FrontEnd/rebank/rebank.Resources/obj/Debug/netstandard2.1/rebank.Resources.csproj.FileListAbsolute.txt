@@ -1,0 +1,10 @@
+C:\hackthon\rebank\rebank.Resources\bin\Debug\netstandard2.1\rebank.Resources.deps.json
+C:\hackthon\rebank\rebank.Resources\bin\Debug\netstandard2.1\rebank.Resources.dll
+C:\hackthon\rebank\rebank.Resources\bin\Debug\netstandard2.1\rebank.Resources.pdb
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.csproj.AssemblyReference.cache
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.GeneratedMSBuildEditorConfig.editorconfig
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.AssemblyInfoInputs.cache
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.AssemblyInfo.cs
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.csproj.CoreCompileInputs.cache
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.dll
+C:\hackthon\rebank\rebank.Resources\obj\Debug\netstandard2.1\rebank.Resources.pdb

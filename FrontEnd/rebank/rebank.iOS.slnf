@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "rebank.sln",
+    "projects": [
+      "rebank.Game\\rebank.Game.csproj",
+      "rebank.Resources\\rebank.Resources.csproj",
+      "rebank.iOS\\rebank.iOS.csproj"
+    ]
+  }
+}
